@@ -19,10 +19,12 @@ class PremiumVanishFix : JavaPlugin(), Listener {
     @EventHandler
     fun onCmd(e: PlayerCommandPreprocessEvent) {
         if (e.player.hasPermission("pv.see")) return
+        val vanishedNames = VanishAPI.getInvisiblePlayers().mapNotNull { Bukkit.getPlayer(it)?.name }
         if (
             config.getStringList("commands").any { e.message.startsWith(it) } &&
-            VanishAPI.getInvisiblePlayers().mapNotNull { Bukkit.getPlayer(it)?.name }.any { e.message.contains(it) }
+            vanishedNames.any { e.message.contains(it) || it.startsWith(e.message.split(" ").getOrNull(1) ?: "", true) }
         ) {
+
             e.isCancelled = true
             e.player.sendMessage(
                 MiniMessage.miniMessage().deserialize(
