@@ -1,0 +1,2 @@
+commands: ["/bal", "/balance"]
+message: "<dark_red>Player not found."

@@ -1,0 +1,9 @@
+name: PremiumVanishFix
+main: it.rattly.PremiumVanishFix
+version: 1.0-SNAPSHOT
+api-version: 1.19
+author: Rattlyy
+description: Fix PremiumVanish not patching essentials commands
+libraries:
+  # Kotlin STDLIB
+  - org.jetbrains.kotlin:kotlin-stdlib:2.1.10
